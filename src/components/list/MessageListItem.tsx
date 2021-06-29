@@ -1,17 +1,41 @@
 import React, { FC } from "react";
-import { MessageModel } from "utils/interface";
-import { ChatMessage } from "components/card/ChatMessage";
+import { AvatarStyled } from "components/card/styles";
+import { BusinessMessage, CustomerMessage, MessageWrapperStyled, MessageWrapperStyledReverse, TimeMessage } from "./styles";
 
+export enum MessageSource {
+  customer = 'customer',
+  business = 'business',
+  time = 'time'
+}
 
+export interface MessageListItemData {
+  text: string;
+  source: MessageSource;
+  avatar?: boolean;
+}
 interface IProps {
-  data: MessageModel;
+  data: MessageListItemData;
 }
 
 export const MessageListItem: FC<IProps> = ({
   data
 }) => {
-  const message = data.body
+  const { text, source, avatar } = data
+
+  const ChatMessage = {
+    customer: CustomerMessage,
+    business: BusinessMessage,
+    time: TimeMessage
+  }[source]
+
+  const Wrapper = source === MessageSource.business
+    ? MessageWrapperStyledReverse
+    : MessageWrapperStyled
+
   return (
-    <ChatMessage>{ message }</ChatMessage>
-  );
+    <Wrapper>
+      { avatar && <AvatarStyled />}
+      { text && <ChatMessage>{ text }</ChatMessage>}
+    </Wrapper>
+  )
 };

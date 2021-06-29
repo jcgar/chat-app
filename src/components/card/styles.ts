@@ -1,4 +1,17 @@
 import styled from 'styled-components';
+import { Avatar } from '@material-ui/core';
+
+import userEmpty from 'assets/User-empty-state.svg'
+
+export const AvatarStyled = styled(Avatar).attrs(props => ({
+  src: userEmpty
+}))`
+  width: 1.75rem;
+  height: 1.75rem;
+  position: absolute;
+`
+
+
 
 export const EllipsisStyled = styled.span`
   min-width: 0;

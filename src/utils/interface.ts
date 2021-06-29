@@ -1,3 +1,4 @@
+import moment from 'moment'
 export interface IChildren {
   children: React.ReactNode;
 }
@@ -16,7 +17,7 @@ export interface CustomerModel {
 
 export interface MessageModel {
   id: number;
-  sender: string;
+  sender: 'customer' | 'business';
   status: 'received',
   body: string;
   receivedAt: string;
@@ -58,7 +59,7 @@ export const parseMessage = (message: any): MessageModel => (
     sender: message.sender,
     status: message.status,
     body: message.body,
-    receivedAt: message.received_at,
+    receivedAt: message.received_at && moment(message.received_at).format('MMMM D, YYYY, HH:mm'),
     queuedAt: message.queued_at,
     sentAt: message.sent_at,
     deliveredAt: message.delivered_at,

@@ -4,11 +4,10 @@ import MessageBoard from "./inbox/MessageBoard";
 
 
 function InboxModule() {
-  const messageId = 2
   return (
     <>
       <InboxConversationList />
-      <MessageBoard messageId={messageId} />
+      <MessageBoard />
     </>
   );
 }

@@ -23,7 +23,9 @@ function InboxConversationList() {
   return (
     message 
     ? <p>{ message }</p>
-    : <ConversationList list={parseConversationList(data)}/>
+    : <>
+        <ConversationList list={parseConversationList(data)}/>
+      </>
   );
 }
 

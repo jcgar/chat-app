@@ -1,10 +1,11 @@
 import React, { FC } from "react";
-import { MessageModel } from "utils/interface";
 import { List } from "./List";
-import { MessageListItem } from "./MessageListItem";
+import { MessageListItem, MessageListItemData } from "./MessageListItem";
+
+
 
 interface IProps {
-  list: [MessageModel] | undefined;
+  list: MessageListItemData[] | undefined;
 }
 
 export const MessageList: FC<IProps> = ({
