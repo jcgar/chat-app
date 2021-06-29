@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Header } from "components/header/Header";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+import { withTheme } from "setup/withTheme";
+import { withQuery } from "setup/withQuery";
+import { Layout } from "components/layout/styles";
+import InboxModule from "modules/InboxModule";
+
+
+export default function App() {
+  const headerTitle = 'inbox'
+  return (withQuery(withTheme(
+    <>
+      <Header>{headerTitle}</Header>
+      <Layout>
+        <InboxModule />
+      </Layout>
+    </>
+  )));
 }
-
-export default App;
